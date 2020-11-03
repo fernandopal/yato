@@ -1,0 +1,6 @@
+.idea
+.gradle
+.env
+.json
+build
+out

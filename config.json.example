@@ -1,0 +1,16 @@
+{
+  "bot-token": "",
+  "google-api-key": "",
+  "spotify-client-id": "",
+  "spotify-secret": "",
+  "bot-id": "483329776996712468",
+  "bot-game": "https://yato.fernandopal.es",
+  "bot-shards": 1,
+  "bot-prefix": "y:",
+  "bot-owners": [
+    "214829164253937674"
+  ],
+  "lavalink-nodes": [
+    "host:port@password"
+  ]
+}

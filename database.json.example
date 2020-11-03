@@ -1,0 +1,7 @@
+{
+  "username": "yato",
+  "password": "supersafepassword",
+  "database-url": "yato-5kjsj.gcp.mongodb.net",
+  "database-name": "yato",
+  "url-args": "retryWrites=true&w=majority"
+}
