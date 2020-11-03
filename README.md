@@ -55,6 +55,13 @@ Don't expect the code to have a good quality, I have learned what I know by myse
   "url-args": "retryWrites=true&w=majority" <- Extra arguments for the database connection
 }
 ```
+
+```yaml
+{
+  "port": 7263, <- Port that the bot will use to open the REST API server
+  "auth-token": "RANDOM_STRING_HERE" <- Put a random string here that will be used for authentication on the api
+}
+```
 When all of that is done you have everything prepared to run yato, the easiest way to run the bot is to install screen (`sudo apt install screen`)  if you're running on a unix based system once screen is in your system follow the next steps:
 1. Open a new screen with `screen -S yato`
 2. Execute the yato-x.x_x.jar file with `java -jar yato-x.x_x.jar`
