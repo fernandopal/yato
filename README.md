@@ -1,6 +1,6 @@
 # Yato | 夜ト
 Yato was planned as a closed-source bot but after +6 months of having it running and +1 year of development I decided it was time to make it open to the community so here we are :)<br>
-Don't expect the code to have a good quality, I have learned what I know by myself, and I still have a lot of things to improve so if you want to improve something pull requests are there for you.
+Don't expect the code to have a good quality, I have learned what I know by myself, and I still have a lot of things to learn so if you want to improve something pull requests are there for you.
 
 **Index:**
 1. [Self hosting guide](#self-hosting-guide)
