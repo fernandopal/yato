@@ -66,8 +66,6 @@ public class CommandManager {
 
         addCommand(new ShutdownCommand());
         addCommand(new MaintenanceCommand());
-//        addCommand(new TestCommand());
-//        addCommand(new UploadSongs());
 
         addCommand(new SetPrefixCommand());
         addCommand(new ToggleQueueMessages());
