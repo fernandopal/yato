@@ -21,7 +21,7 @@ Don't expect the code to have a good quality, I have learned what I know by myse
 - A Google application with [youtube data api V3](https://developers.google.com/youtube/v3) enabled
 - A [spotify application](https://developer.spotify.com) (not in use by the moment but can be implemented in the future)
 - [Download Lavalink.jar](https://github.com/Frederikam/Lavalink/releases) (Lavalink is used to distribute the audio sending load)
-- [Download the latest yato release](https://github.com/fernandopal/yato-public/releases) or build yato by yourself using the source code.
+- [Download the latest yato release](https://github.com/fernandopal/yato/releases) or build yato by yourself using the source code.
 
 **How to set up yato properly?**<br>
 1. Put your yato-x.x_x.jar in a folder.
