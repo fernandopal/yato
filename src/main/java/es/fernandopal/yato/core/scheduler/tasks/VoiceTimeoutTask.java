@@ -27,7 +27,8 @@ public class VoiceTimeoutTask implements Task {
         if(voiceState != null && voiceState.inVoiceChannel()) {
 			AudioManagerController.getGuildAudioManager(guild).closeConnection();
 			AudioManagerController.getGuildAudioManager(guild).destroy();
-            msg.sendWebhookMsg("VC left `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
+            //TODO: fix in-discord logs
+//            msg.sendWebhookMsg("VC left `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
 //            LOGGER.info("VC left " + guild.toString());
         }
     }
