@@ -19,9 +19,9 @@ public class HostCommand implements ICommand {
 
         double totalMemory = Main.getRuntime().totalMemory();
         double freeMemory = Main.getRuntime().freeMemory();
-        double systemTotal = Main.getSystem().getTotalPhysicalMemorySize();
-        double cpu_usage = Math.round(Main.getSystem().getSystemCpuLoad() * 100);
-        String system_used = convert(systemTotal - Main.getSystem().getFreePhysicalMemorySize());
+        double systemTotal = Main.getSystem().getTotalMemorySize();
+        double cpu_usage = Math.round(Main.getSystem().getCpuLoad() * 100);
+        String system_used = convert(systemTotal - Main.getSystem().getFreeMemorySize());
         String system_total = convert(systemTotal);
         String runtime_max_alloc = convert((double) Main.getRuntime().maxMemory());
         String runtime_alloc = convert(totalMemory);
