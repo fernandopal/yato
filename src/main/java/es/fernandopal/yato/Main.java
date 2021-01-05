@@ -4,6 +4,7 @@ import ch.qos.logback.classic.Level;
 import es.fernandopal.yato.core.BotManager;
 import es.fernandopal.yato.core.audio.AudioManagerController;
 import es.fernandopal.yato.core.scheduler.DailyTasks;
+import es.fernandopal.yato.core.web.YatoRestServer;
 import es.fernandopal.yato.core.web.routes.GetGuild;
 import es.fernandopal.yato.core.web.routes.GetShards;
 import es.fernandopal.yato.core.web.routes.GetStats;
@@ -41,22 +42,17 @@ import java.util.List;
 public class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
-    public static final Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(Runtime.getRuntime().availableProcessors()));
     public static boolean maintenance = false;
 
     private static final OperatingSystemMXBean system = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
     private static final RuntimeMXBean runtime_mx = ManagementFactory.getRuntimeMXBean();
+    private static final YatoRestServer restServer = new YatoRestServer();
     private static final Runtime runtime = Runtime.getRuntime();
-    private static final Config config = new Config();
-    private static final Webserver ws = new Webserver();
+    private static final Config config = new Config(); //TODO: I need to make a getter to have access from other classes and prevent to have it declared multiple times
     private static BotManager botManager;
     private static ShardManager shardManager;
     private static DiscordBotListAPI discordBotListAPI;
     private static DatabaseManager db;
-
-    private static final HttpServer server = vertx.createHttpServer();
-    private static final Router router = Router.router(vertx);
-    private static final Router apiRouter = Router.router(vertx);
 
     public static final boolean enableCompatMode = true;
 
@@ -72,17 +68,6 @@ public class Main {
         botManager = new BotManager();
         shardManager = botManager.getShardManager();
 
-//        router.route().handler(CorsHandler.create("*")
-//                .allowedMethod(io.vertx.core.http.HttpMethod.GET)
-//                .allowedMethod(io.vertx.core.http.HttpMethod.POST)
-//                .allowedMethod(io.vertx.core.http.HttpMethod.OPTIONS)
-//                .allowedHeader("Access-Control-Request-Method")
-//                .allowedHeader("Access-Control-Allow-Credentials")
-//                .allowedHeader("Access-Control-Allow-Origin")
-//                .allowedHeader("Access-Control-Allow-Headers")
-//                .allowedHeader("Content-Type"));
-//        router.route().handler(BodyHandler.create());
-
         LOGGER.info("Registering listeners...");
         registerListeners();
 
@@ -94,48 +79,15 @@ public class Main {
         dailyTasks.executeEveryMorning();
         dailyTasks.executeEveryNight();
 
-        LOGGER.info("Connecting with top.gg");
-        discordBotListAPI = new DiscordBotListAPI.Builder().token(config.getString("dbl-token")).botId(config.getString("bot-id")).build();
+        if(config.getString("dbl-token") == null) { //The bot-id can't be null at this point so we don't have to check it
+            LOGGER.warn("Top.gg token not found, disabling voting system");
+            discordBotListAPI = null;
+        } else {
+            LOGGER.info("Connecting with top.gg");
+            discordBotListAPI = new DiscordBotListAPI.Builder().token(config.getString("dbl-token")).botId(config.getString("bot-id")).build();
+        }
 
-        //TODO: Replace this shit with a rest api           (BN: 2.1_8)
-//        WebBridge webBridge = new WebBridge();
-//        webBridge.run();
-
-        LOGGER.info("Starting to listen for rest requests...");
-        listen();
-    }
-
-    private static void routes() {
-        apiRouter.route(HttpMethod.GET, "/stats")
-                .produces("application/json")
-                .blockingHandler(GetStats::execute, true)
-                .enable();
-        apiRouter.route(HttpMethod.GET, "/shards")
-                .produces("application/json")
-                .blockingHandler(GetShards::execute, true)
-                .enable();
-        apiRouter.route(HttpMethod.GET, "/guild")
-                .produces("application/json")
-                .blockingHandler(GetGuild::execute, true)
-                .enable();
-        apiRouter.route(HttpMethod.GET, "/user")
-                .produces("application/json")
-                .blockingHandler(GetUser::execute, true)
-                .enable();
-        apiRouter.route("/*")
-                .handler(StaticHandler.create().setIndexPage("yato.html"))
-                .enable();
-        router.mountSubRouter("/api/", apiRouter); //Added SubRouter        (BN: 2.1_10)
-        LOGGER.info("API route handlers are now set!");
-    }
-
-    static void listen() {
-        routes();
-
-        int port = ws.getInt("port");
-
-        server.requestHandler(router).listen(port);
-        LOGGER.info("Success. Yato is now online and ready! Configured to listen @ port: " + port);
+        restServer.listen();
     }
 
     private static void registerListeners() {
@@ -176,7 +128,12 @@ public class Main {
     public static RuntimeMXBean getRuntime_mx() {
         return runtime_mx;
     }
+
+    //TODO: Implement an option to enable/disable donations to unlock certain features, this can also have a config file to choose which features are
+    // unlocked by donations and which ones are not. My plan is to have a system that relies on per server donations, just for server owners but that
+    // also allow the users of that server to contribute to a global goal and if that goal is completed every month, the server will receive all the
+    // extra features.
     public static boolean isPremiumServer() {
-        return false;
+        return true; //Return true until implemented so everything is free
     }
 }
