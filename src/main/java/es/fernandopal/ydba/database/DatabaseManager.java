@@ -44,7 +44,7 @@ public class DatabaseManager {
             LOGGER.error("One of the values of your database config returns null, please check them.");
             System.exit(Status.ERROR);
         } else {
-            MongoClient mongoClient = MongoClients.create("mongodb://"+username+":"+password+"@"+dbUrl+":"+dbPort+"/"+dbName+"?"+urlArgs); //TODO: Put this with params on cfg
+            MongoClient mongoClient = MongoClients.create("mongodb://"+username+":"+password+"@"+dbUrl+":"+dbPort+"/"+dbName+"?"+urlArgs);
             this.database = mongoClient.getDatabase(dbName);
         }
 
