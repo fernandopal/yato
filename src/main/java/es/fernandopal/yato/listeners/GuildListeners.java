@@ -100,7 +100,8 @@ public class GuildListeners extends ListenerAdapter {
         }
 
         embed.build();
-        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/730682513030119455/-UaLe4gErJBv9xKKBGzsjtOO3NczV_Xrjz6bxGyqd9kYutkFm3DN8gYU9pM1O3hRA4wU");
+        //TODO: fix in-discord logs
+//        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/730682513030119455/-UaLe4gErJBv9xKKBGzsjtOO3NczV_Xrjz6bxGyqd9kYutkFm3DN8gYU9pM1O3hRA4wU");
     }
 
     @Override
@@ -120,7 +121,8 @@ public class GuildListeners extends ListenerAdapter {
         }
 
         embed.build();
-        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/730682513030119455/-UaLe4gErJBv9xKKBGzsjtOO3NczV_Xrjz6bxGyqd9kYutkFm3DN8gYU9pM1O3hRA4wU");
+        //TODO: fix in-discord logs
+//        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/730682513030119455/-UaLe4gErJBv9xKKBGzsjtOO3NczV_Xrjz6bxGyqd9kYutkFm3DN8gYU9pM1O3hRA4wU");
     }
 
 
@@ -190,7 +192,8 @@ public class GuildListeners extends ListenerAdapter {
 
     private void startTimeout(TrackScheduler scheduler, Guild guild) {
         scheduler.setTimeout(ScheduleHandler.registerUniqueJob(new VoiceTimeoutJob(guild)));
-        msg.sendWebhookMsg("VC empty | The bot will leave in 1 minute from `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
+        //TODO: fix in-discord logs
+//        msg.sendWebhookMsg("VC empty | The bot will leave in 1 minute from `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
 //        LOGGER.info("VC empty | The bot will leave in 1 minute from " + guild.toString());
     }
 
@@ -198,7 +201,8 @@ public class GuildListeners extends ListenerAdapter {
         if (scheduler.getTimeout() != null) {
             scheduler.getTimeout().cancel(true);
             scheduler.setTimeout(null);
-            msg.sendWebhookMsg("VC not empty | Leave job cancelled for `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
+            //TODO: fix in-discord logs
+//            msg.sendWebhookMsg("VC not empty | Leave job cancelled for `" + guild.toString() + "`", "https://discordapp.com/api/webhooks/733077861639913580/t_5H_mh3Onjgkki24CFTTrfNniPiXCEM-zUH7LFNDarmroQYb9zjLeH78RHSgumbD-p1");
 //            LOGGER.info("VC not empty | Leave job cancelled for " + guild.toString());
         }
     }

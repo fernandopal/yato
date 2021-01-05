@@ -83,66 +83,68 @@ public class ConnectionListeners extends ListenerAdapter {
 
             BotManager.ready = true;
 
-            WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
-            embed.setColor(Color.GREEN.getRGB());
+//	          TODO: fix in-discord logs
 
-            final String uptime = Main.getBotManager().getDurationBreakdown(Main.getRuntime_mx().getUptime(), false);
-
-            embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Startup took " + uptime + "**");
-
-            final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
-            final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
-            final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
-
-            embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
-            embed.build();
-            msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
+//            WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
+//            embed.setColor(Color.GREEN.getRGB());
+//
+//            final String uptime = Main.getBotManager().getDurationBreakdown(Main.getRuntime_mx().getUptime(), false);
+//
+//            embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Startup took " + uptime + "**");
+//
+//            final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
+//            final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
+//            final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
+//
+//            embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
+//            embed.build();
+//            msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
         }
     }
 
-    @Override
+    @Override //TODO: fix in-discord logs
     public void onDisconnect(@Nonnull DisconnectEvent event) {
-        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
-        embed.setColor(Color.getHSBColor(5, 73, 96).getRGB());
-        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Disconnected from WS**");
-        embed.addField(new WebhookEmbed.EmbedField(false, "Code:", Objects.requireNonNull(event.getCloseCode()).toString()));
-
-        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
-        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
-        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
-
-        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
-        embed.build();
-        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
+//        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
+//        embed.setColor(Color.getHSBColor(5, 73, 96).getRGB());
+//        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Disconnected from WS**");
+//        embed.addField(new WebhookEmbed.EmbedField(false, "Code:", Objects.requireNonNull(event.getCloseCode()).toString()));
+//
+//        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
+//        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
+//        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
+//
+//        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
+//        embed.build();
+//        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
     }
 
-    @Override
+    @Override //TODO: fix in-discord logs
     public void onReconnect(@Nonnull ReconnectedEvent event) {
-        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
-        embed.setColor(Color.GREEN.getRGB());
-        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Reconnected to WS**");
-
-        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
-        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
-        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
-
-        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
-        embed.build();
-        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
+//        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
+//        embed.setColor(Color.GREEN.getRGB());
+//        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || Reconnected to WS**");
+//
+//        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
+//        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
+//        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
+//
+//        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
+//        embed.build();
+//        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
     }
 
-    @Override
+    @Override //TODO: fix in-discord logs
     public void onResume(@Nonnull ResumedEvent event) {
-        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
-        embed.setColor(Color.GREEN.getRGB());
-        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || WS connection resumed**");
-
-        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
-        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
-        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
-
-        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
-        embed.build();
-        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
+//        WebhookEmbedBuilder embed = new WebhookEmbedBuilder();
+//        embed.setColor(Color.GREEN.getRGB());
+//        embed.setDescription("**" + event.getJDA().getSelfUser().getName() + " || WS connection resumed**");
+//
+//        final LocalDateTime CET = LocalDateTime.now(ZoneId.of("CET"));
+//        final String date = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(CET);
+//        final String time = DateTimeFormatter.ofPattern("HH:mm:ss").format(CET);
+//
+//        embed.setFooter(new WebhookEmbed.EmbedFooter(date + " [" + time + " CET]", event.getJDA().getSelfUser().getEffectiveAvatarUrl()));
+//        embed.build();
+//        msg.sendWebhookEmbed(embed, "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
     }
 }

@@ -188,10 +188,10 @@ public class GuildAudioManager {
 
     }
 
-    private void warnIf429(Exception e, CommandContext ctx) {
-        if(Arrays.toString(e.getStackTrace()).contains("429")) { //TODO: make mention all config.getList("bot-owners")
-            msg.sendWebhookMsg("429 code received, you need to perform a ip rotation " + ctx.getJDA().retrieveUserById("214829164253937674").complete().getAsMention(), "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
-        }
+    private void warnIf429(Exception e, CommandContext ctx) { //TODO: fix in-discord logs
+//        if(Arrays.toString(e.getStackTrace()).contains("429")) { //TODO: make mention all config.getList("bot-owners")
+//            msg.sendWebhookMsg("429 code received, you need to perform a ip rotation " + ctx.getJDA().retrieveUserById("214829164253937674").complete().getAsMention(), "https://discordapp.com/api/webhooks/733019361601650880/V_tUSYJgeGR1MkESRQAZbRZStvpirj2pC5o8bXayho9shcPa2xMXQl8SQ-bgqVlfNLzW");
+//        }
     }
 
     public void closeConnection() {
