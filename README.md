@@ -48,7 +48,11 @@ Don't expect the code to have a good quality, I have learned what I know by myse
   ],
   "lavalink-nodes": [ <- Add your lavalink nodes here, must contain at least one
     "host:port@password"
-  ]
+  ],
+  "dbl-token": "your top.gg token", <- Token obtained if your bot is on top.gg [OPTIONAL, needed just for votes]
+  "haruna-url": "http://localhost", <- The url where your haruna server is listening [OPTIONAL, needed just for votes]
+  "haruna-port": "6969", <- The port of that you have set on your haruna config [OPTIONAL, needed just for votes]
+  "haruna-password": "your-password-here", <- The password of your haruna server [OPTIONAL, needed just for votes]
 }
 ````
 

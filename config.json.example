@@ -12,5 +12,9 @@
   ],
   "lavalink-nodes": [
     "host:port@password"
-  ]
+  ],
+  "dbl-token": "your top.gg token",
+  "haruna-url": "http://localhost",
+  "haruna-port": "6969",
+  "haruna-password": "your-password-here",
 }
