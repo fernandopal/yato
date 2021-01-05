@@ -1,3 +1,10 @@
+![GitHub](https://img.shields.io/github/license/fernandopal/yato?style=for-the-badge)
+[![GitHub issues](https://img.shields.io/github/issues/fernandopal/yato?style=for-the-badge)](https://github.com/fernandopal/yato/issues)
+[![GitHub forks](https://img.shields.io/github/forks/fernandopal/yato?style=for-the-badge)](https://github.com/fernandopal/yato/network)
+[![GitHub stars](https://img.shields.io/github/stars/fernandopal/yato?style=for-the-badge)](https://github.com/fernandopal/yato/stargazers)
+![Discord](https://img.shields.io/discord/703263711971901450?label=discord&style=for-the-badge)
+
+
 # Yato | 夜ト
 Yato was planned as a closed-source bot but after +6 months of having it running and +1 year of development I decided it was time to make it open to the community so here we are :)<br>
 Don't expect the code to have a good quality, I have learned what I know by myself, and I still have a lot of things to learn so if you want to improve something I appreciate all the pull requests.
@@ -6,12 +13,6 @@ Don't expect the code to have a good quality, I have learned what I know by myse
 1. [Self hosting guide](#self-hosting-guide)
 2. [Building the code by yourself](#building-the-code)
 2. [Bot features](#bot-features)
-
-**Info:**
-- [Discord](https://discord.gg/aHJXGb3)
-- [mail@fernandopal.es](mailto:mail@fernandopal.es)
-- [Yato website](https://yato.fernandopal.es)
-- [My website](https://www.fernandopal.es)
 
 <!--
 **top.gg:** <br>
