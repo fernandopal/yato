@@ -23,6 +23,7 @@ Don't expect the code to have a good quality, I have learned what I know by myse
 
 # Self hosting guide
 **First of all, a list of what you need to have:**
+- Java 14 or later installed on the machine you're going to run yato 
 - An app created at [discord developer portal](https://discord.com/developers)
 - A MongoDB database (free tier of [mongodb atlas](https://www.mongodb.com/cloud/atlas) it's ok for small bots)
 - A Google application with [youtube data api V3](https://developers.google.com/youtube/v3) enabled
@@ -82,7 +83,7 @@ When all of that is done you have everything prepared to run yato, the easiest w
 
 # Building the code
 **Requisites to compile the java code into a runnable yato.jar:**
-- [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed into your computer
+- [JDK 14](https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html) installed into your computer
 - [Gradle](https://gradle.org/install/) installed into your computer
 
 **How do I build the yato.jar file?**
