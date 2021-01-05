@@ -50,7 +50,7 @@ public class GuildListeners extends ListenerAdapter {
 
 //            LOGGER.info("Updating bot stats...");
             if (!Main.enableCompatMode) Main.getDb().updateBotUserStats(shardManager.getUsers().size(), shardManager.getGuilds().size());
-            Main.getDiscordBotListAPI().setStats(shardManager.getGuilds().size());
+            if(Main.getDiscordBotListAPI() != null) Main.getDiscordBotListAPI().setStats(shardManager.getGuilds().size());
         });
         thread.start();
 
@@ -127,7 +127,7 @@ public class GuildListeners extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceLeave(@Nonnull GuildVoiceLeaveEvent event) {
-        if(!Main.isPremiumServer()) {
+        if(Main.isPremiumServer()) {
             final Guild guild = event.getGuild();
             final Member selfMember = event.getGuild().getSelfMember();
             final VoiceChannel channelLeft = event.getChannelLeft();
@@ -144,7 +144,7 @@ public class GuildListeners extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceJoin(@Nonnull GuildVoiceJoinEvent event) {
-        if(!Main.isPremiumServer()) {
+        if(Main.isPremiumServer()) {
             final Guild guild = event.getGuild();
             final Member selfMember = event.getGuild().getSelfMember();
             final VoiceChannel channelJoined = event.getChannelJoined();
@@ -161,7 +161,7 @@ public class GuildListeners extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceMove(@Nonnull GuildVoiceMoveEvent event) {
-        if(!Main.isPremiumServer()) {
+        if(Main.isPremiumServer()) {
             final Guild guild = event.getGuild();
             final Member selfMember = event.getGuild().getSelfMember();
 

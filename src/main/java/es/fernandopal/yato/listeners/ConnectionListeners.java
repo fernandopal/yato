@@ -58,7 +58,7 @@ public class ConnectionListeners extends ListenerAdapter {
                 int users = 0;
                 for(Guild g : Main.getShardManager().getGuilds()) { users += g.loadMembers().get().size(); }
                 Main.getDb().updateBotUserStats(users, Main.getShardManager().getGuilds().size());
-                Main.getDiscordBotListAPI().setStats(Main.getShardManager().getGuilds().size());
+                if(Main.getDiscordBotListAPI() != null) Main.getDiscordBotListAPI().setStats(Main.getShardManager().getGuilds().size());
                 LOGGER.info("Users processed: " + users);
             });
             if(!Main.enableCompatMode) updateUsersData.start();

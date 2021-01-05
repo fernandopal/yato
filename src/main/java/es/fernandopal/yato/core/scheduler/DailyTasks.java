@@ -81,7 +81,7 @@ public class DailyTasks {
 				int users = 0;
 				for(Guild g : shardManager.getGuilds()) { users += g.getMemberCount(); }
 				Main.getDb().updateBotUserStats(users, shardManager.getGuilds().size());
-				Main.getDiscordBotListAPI().setStats(shardManager.getGuilds().size());
+				if(Main.getDiscordBotListAPI() != null) Main.getDiscordBotListAPI().setStats(shardManager.getGuilds().size());
 				LOGGER.info("Users processed: " + users);
 			});
 			updateUsersData.start();
