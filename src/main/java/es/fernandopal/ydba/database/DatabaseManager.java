@@ -36,6 +36,7 @@ public class DatabaseManager {
         final String username = dbConfig.getString("username");
         final String password = dbConfig.getString("password");
         final String dbUrl = dbConfig.getString("database-url");
+        final String dbPort = dbConfig.getString("database-port");
         final String dbName = dbConfig.getString("database-name");
         final String urlArgs = dbConfig.getString("url-args");
 
@@ -43,9 +44,10 @@ public class DatabaseManager {
             LOGGER.error("One of the values of your database config returns null, please check them.");
             System.exit(Status.ERROR);
         } else {
-            MongoClient mongoClient = MongoClients.create("mongodb+srv://"+username+":"+password+"@"+dbUrl+"/"+dbName+"?"+urlArgs);
+            MongoClient mongoClient = MongoClients.create("mongodb://"+username+":"+password+"@"+dbUrl+":"+dbPort+"/"+dbName+"?"+urlArgs); //TODO: Put this with params on cfg
             this.database = mongoClient.getDatabase(dbName);
         }
+
     }
 
     public String getPrefix(long guildId) {
