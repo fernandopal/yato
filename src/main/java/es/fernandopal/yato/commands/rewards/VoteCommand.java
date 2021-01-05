@@ -6,6 +6,7 @@ import es.fernandopal.yato.commands.CommandContext;
 import es.fernandopal.yato.commands.CommandType;
 import es.fernandopal.yato.commands.ICommand;
 import es.fernandopal.yato.commands.PermLevel;
+import es.fernandopal.yato.files.Config;
 import es.fernandopal.yato.util.Emoji;
 import es.fernandopal.yato.util.MessageUtil;
 import es.fernandopal.ydba.database.DatabaseManager;
@@ -22,6 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class VoteCommand implements ICommand {
     private static final Logger LOGGER = LoggerFactory.getLogger(VoteCommand.class);
+    private static final Config config = new Config();
 
     @Override
     public void handle(CommandContext ctx) {
@@ -30,16 +32,26 @@ public class VoteCommand implements ICommand {
         final Member member = ctx.getMember();
 
         final DiscordBotListAPI discordBotListAPI = Main.getDiscordBotListAPI();
-        final DatabaseManager db = Main.getDb();
 
-        HarunaRequest haruna = new HarunaRequest("http://cdn.fernandopal.es:6969", "BOFA938JIPERL00B");
+        if(discordBotListAPI == null) {
+            msg.sendWarn(tc, Emoji.WARNING + " Voting is disabled for this bot, contact the owner if you think it can be an error");
+            return;
+        }
+
+        if(config.getString("haruna-url") == null || config.getString("haruna-password") == null || config.getString("haruna-port") == null) {
+            msg.sendWarn(tc, Emoji.WARNING + " Voting is disabled for this bot, you have messed up when configuring your haruna server or haruna credentials on the yato config.json");
+            return;
+        }
+
+        final DatabaseManager db = Main.getDb();
+        HarunaRequest haruna = new HarunaRequest(config.getString("haruna-url") + ":" + config.getString("haruna-port"), config.getString("haruna-password"));
 
         if(haruna.hasVoted(member.getIdLong())) {
             if(db.hasVoted(member.getIdLong())) {
                 msg.sendWarn(tc, Emoji.CLOCK1 + " You have already voted today, come again in 12h to get more points!");
             } else {
                 AtomicInteger pointsMultiplier = new AtomicInteger(1);
-                discordBotListAPI.getVotingMultiplier().whenComplete((m, ignored) -> { pointsMultiplier.set(m.isWeekend() ? 3 : 1); });
+                discordBotListAPI.getVotingMultiplier().whenComplete((m, ignored) -> pointsMultiplier.set(m.isWeekend() ? 3 : 1));
 
                 final int multiplier = pointsMultiplier.intValue();
                 final int randomPoints = ThreadLocalRandom.current().nextInt(multiplier, (10 * multiplier) + multiplier);
@@ -61,7 +73,7 @@ public class VoteCommand implements ICommand {
             embedBuilder.setColor(Color.BLUE);
             embedBuilder.setDescription(
                     "Steps to get your daily points:" + "\n" +
-                    "1. Go to [this link](https://top.gg/bot/454272495114256394) and click on the 'vote' button." + "\n" +
+                    "1. Go to [this link](https://top.gg/bot/" + config.getString("bot-id") + ") and click on the 'vote' button." + "\n" +
                     "2. When that's done and the page says you have voted come back here and execute this command again. (It can take a minute to register the vote, please be patient)"
             );
             tc.sendMessage(embedBuilder.build()).queue();
